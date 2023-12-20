@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { parseCookies } from 'nookies'
 
-axios.defaults.baseURL = 'http://localhost:7777'
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 
 axios.interceptors.request.use((config) => {
     if (typeof window !== 'undefined') {
