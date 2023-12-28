@@ -184,6 +184,7 @@ const DashboardPage: NextPage<Props> = ({ activitiesData, mentorsData }) => {
             <Button
                 type="primary"
                 icon={<PlusOutlined />}
+                className="plus-icon"
                 size="middle"
                 onClick={() => {
                     setEditMode('new')

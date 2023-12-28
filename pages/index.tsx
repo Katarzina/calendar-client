@@ -131,7 +131,7 @@ const HomePage: NextPage<Props> = ({
                         right: '5px',
                     }}
                 >
-                    <MinusOutlined />
+                    <MinusOutlined className="minus-icon" />
                 </div>
             </Popconfirm>
         )
@@ -152,7 +152,7 @@ const HomePage: NextPage<Props> = ({
                         right: ifAdd ? '25px' : '5px',
                     }}
                 >
-                    {ifAdd ? 'You are added' : <PlusOutlined />}
+                    {ifAdd ? 'You are added' : <PlusOutlined className="plus-icon"/>}
                 </div>
             </Popconfirm>
         )
@@ -197,6 +197,7 @@ const HomePage: NextPage<Props> = ({
                                             marginBottom: '10px',
                                             width: '200px',
                                         }}
+                                        className="activity-item"
                                     >
                                         <div
                                             style={{
@@ -215,7 +216,7 @@ const HomePage: NextPage<Props> = ({
                                         </p>
                                         <p>Activity: {activity.activity}</p>
                                         <p>Theme: {activity.theme}</p>
-                                        <p>Mentor: {mentor.fullName}</p>
+                                        <p>Mentor: {mentor?.fullName}</p>
                                         <AddToActivity
                                             onConfirm={handleAdd}
                                             id={activity.id}
