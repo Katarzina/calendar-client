@@ -1,20 +1,20 @@
-export type ActivityItem = BaseActivity & StartEndInterface & IdInterface
+export type ActivityItem = BaseActivity & StartEndInterface & IdInterface;
 
 interface IdInterface {
-    id: number
+  id: number;
 }
 export interface BaseActivity {
-    activity: string
-    theme: string
-    mentorId: number
+  activity: string;
+  theme: string;
+  mentorId: number;
 }
 
 export interface StartEndInterface {
-    start: Date
-    end: Date
+  start: Date;
+  end: Date;
 }
 
 export type ActivityDataItem = BaseActivity & {
-    startDate: Date
-    endDate: Date
-} & IdInterface
+  startDate: Date;
+  endDate: Date;
+} & IdInterface;

@@ -1,17 +1,17 @@
-import { atom, selector } from 'recoil'
-import { User } from '@/api/dto/auth.dto'
+import { atom, selector } from "recoil";
+import { User } from "@/api/dto/auth.dto";
 
 export const userState = atom<null | User>({
-    key: 'UsersState',
-    default: null,
-})
+  key: "UsersState",
+  default: null,
+});
 
 export const userSelector =
-    (selector << null) |
-    (User >>
-        {
-            key: 'UsersSelector',
-            get: ({ get }) => {
-                return get(userState)
-            },
-        })
+  (selector << null) |
+  (User >>
+    {
+      key: "UsersSelector",
+      get: ({ get }) => {
+        return get(userState);
+      },
+    });

@@ -1,12 +1,12 @@
-import { User } from './auth.dto'
-import { ActivityDataItem } from './activities.dto'
+import { User } from "./auth.dto";
+import { ActivityDataItem } from "./activities.dto";
 export interface Subscription {
-    id: number
-    user: User
-    activity: ActivityDataItem
+  id: number;
+  user: User;
+  activity: ActivityDataItem;
 }
 
 export interface createSubscription {
-    userId: number
-    activityId: number
+  userId: number;
+  activityId: number;
 }
