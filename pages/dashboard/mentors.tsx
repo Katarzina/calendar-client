@@ -10,7 +10,11 @@ import { ActivityItem } from "../../api/dto/activities.dto";
 import MentorForm from "@/components/MentorForm";
 import { Mentor } from "@api/dto/mentors.dto";
 import { ColumnsType } from "antd/es/table";
-import { createMentor, removeMentor, updateMentor } from "../../graphql/mentors";
+import {
+  createMentor,
+  removeMentor,
+  updateMentor,
+} from "../../graphql/mentors";
 
 interface Props {
   mentorsData: ActivityItem[];

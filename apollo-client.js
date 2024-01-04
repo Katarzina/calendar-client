@@ -4,7 +4,7 @@ import * as process from "process";
 //const url = "http://localhost:7777/graphql";
 
 const httpLink = new HttpLink({
-  uri: process.env.BACKEND_API, // Замените на ваш GraphQL endpoint
+  uri: "http://localhost:7777/graphql", // Замените на ваш GraphQL endpoint
 });
 
 const client = new ApolloClient({

@@ -6,7 +6,10 @@ import { ActivityDataItem } from "../api/dto/activities.dto";
 import React, { useMemo, useState, useEffect } from "react";
 import moment from "moment";
 import { Mentor } from "@api/dto/mentors.dto";
-import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import {
+  PlusOutlined,
+  MinusOutlined
+} from "@ant-design/icons";
 import { notification, Popconfirm } from "antd";
 import { Subscription } from "../api/dto/subscriptions.dto";
 import { checkAuth } from "@/utils/checkAuth";
@@ -15,6 +18,11 @@ import { User } from "@/api/dto/auth.dto";
 import { Layout } from "@/layouts/Layout";
 import { userState } from "../state/user";
 import { useSetRecoilState } from "recoil";
+import { useMutation } from "@apollo/client";
+import {
+  CREATE_SUBSCRIPTION_MUTATION,
+  REMOVE_SUBSCRIPTION_MUTATION,
+} from "../graphql/subscriptions";
 
 interface Props {
   activitiesData: ActivityDataItem[];
@@ -36,6 +44,9 @@ const HomePage: NextPage<Props> = ({
   const router = useRouter();
   const [clicked, setClicked] = useState<boolean>(false);
   const setUser = useSetRecoilState(userState);
+
+  const [createSubscription, { loading: creating, error: createError }] =
+    useMutation(CREATE_SUBSCRIPTION_MUTATION);
 
   useEffect(() => {
     if (isAuth) {
@@ -81,6 +92,18 @@ const HomePage: NextPage<Props> = ({
         activityId: id,
         userId: userData.id,
       });
+      /*const { data } = await createSubscription({
+        variables: {
+          createSubscriptionDto: { activityId: id, userId: userData.id },
+        },
+      });*/
+
+      /*if (data && data.createSubscription) {
+        setSubscriptions((prevSubscriptions) => [
+          ...prevSubscriptions,
+          data.createSubscription,
+        ]);
+      }*/
       setSubscriptions([...subscriptions, subscriptionAnswer]);
     } catch (err) {
       notification.error({
@@ -152,11 +175,16 @@ const HomePage: NextPage<Props> = ({
             right: ifAdd ? "25px" : "5px",
           }}
         >
-          {ifAdd ? "You are added" : <PlusOutlined className="plus-icon" />}
+          { ifAdd ? (
+            "You are added"
+          ) : (
+            <PlusOutlined className="plus-icon" />
+          )}
         </div>
       </Popconfirm>
     );
   };
+
   return (
     <>
       <Head>
